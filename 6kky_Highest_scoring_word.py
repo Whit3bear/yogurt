@@ -15,9 +15,4 @@ def high(x):
     return arr[position]
     
 
-    
-    
-print(high('man i need a taxi up to ubud'))
-   #'taxi'
-
 
