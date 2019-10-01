@@ -22,7 +22,3 @@ def get_section_id(scroll, sizes):
             return idx
     return -1    
         
-
-
-print(get_section_id(500, [300, 200, 400, 600, 100]))
-#0
