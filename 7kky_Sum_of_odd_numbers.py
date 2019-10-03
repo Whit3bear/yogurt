@@ -13,16 +13,18 @@ row_sum_odd_numbers(1); # 1
 row_sum_odd_numbers(2); # 3 + 5 = 8 """
 
 # это полный обход всех чисел
-def row_sum_odd_numbers(n):       
-    number = 1
-    for i in range(n+1):                                  
-        result = 0
-        for j in range(i):                        
-            result += number
-            number += 2             
-    return result
+# def row_sum_odd_numbers(n):       
+#     number = 1
+#     for i in range(n+1):                                  
+#         result = 0
+#         for j in range(i):                        
+#             result += number
+#             number += 2             
+#     return result
+
 # можно просто вернуть куб числа 
-#   return n**3
+def row_sum_odd_numbers(n):       
+    return n**3
         
    
   
