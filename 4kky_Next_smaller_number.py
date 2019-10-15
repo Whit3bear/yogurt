@@ -1,29 +1,36 @@
-def next_smaller(n):
-    # идем циклом по числу с конца, ищем цифру которая больше предыдущей, если не находим, возвращаем -1
-    # если находим, то делаем выход из цикла в i содержится индекс элемента с которого нужно делать перестановку 
+def next_smaller(n):  
+    
     lst = [int(x) for x in str(n)]
-    for i in range(len(lst)-1, 0, -1):      
+    for i in range(len(lst)-1, 0, -1):     
+        
         if lst[i-1] > lst[i]:                        
             break
-    # ничего не найдено
+    # ничего не найдено это минимальное число
     else:        
         return -1
 
-    smallest = i    
-    # в правой части списка, сравним элементы и найдем наименьший элемент, поменяем значением
+    swap = i    
+    # цикл по срезу правой части списка, ищем элемент который меньше числа не по порядку, но больше числа идущего за ним в списке   
     for j in range(i, len(lst)):        
-        if lst[j] < lst[i-1] and lst[j] < lst[i]:
-            smallest = j
+        if lst[j] < lst[i-1] and lst[j] > lst[i]:        
+            swap = j
     
-    lst[smallest], lst[i-1] = lst[i-1], lst[smallest]
+    # выполняем замену
+    lst[swap], lst[i-1] = lst[i-1], lst[swap]
 
     #сортируем
-    newlst = lst[:smallest] + sorted(lst[smallest:], reverse=True)
-    return newlst   
+    newlst = lst[:i] + sorted(lst[i:], reverse=True)
+    return newlst
 
     # 24135 свапаем 4 и 1, 21435 находим наименьший номер, с которым меняемся значением, далее сортируем после 4 последние две цифры по убыванию, 21453
     # 24325
 
+# ноль нужно игнорировать, брать предыдущее значение
+print(next_smaller(1027))
+# -1
+# должно быть меньше 5 [i-1] но больше 1 [i]
+#print(next_smaller(513))
+# 351
 
 #print(next_smaller(907))
 #790
@@ -41,5 +48,5 @@ def next_smaller(n):
 #123456789
 #next_smaller(123456789)
 #-1)
-print(next_smaller(1234567908))
+#print(next_smaller(1234567908))
 #1234567890
