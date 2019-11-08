@@ -11,13 +11,21 @@ isPP(4) => [2,2]
 isPP(9) => [3,2]
 isPP(5) => None """
 
-def isPP(n):
+def isPP(n):    
+    for m in range(2, n+1):
+        if m*m > n:
+            break        
+        for k in range(2, n+1):
+            if m**k > n:
+                break
+            if m**k == n:
+                return [m, k]
     
-    pass
+    return None
 
-isPP(4)
+#print(isPP(4))
 # [2,2], "4 = 2^2"
-isPP(9)
+print(isPP(9))
 # [3,2], "9 = 3^2"
-isPP(5) 
+#print(isPP(5))
 # None, "5 isn't a perfect power"
