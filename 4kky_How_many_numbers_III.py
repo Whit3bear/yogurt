@@ -43,14 +43,19 @@ Features of the random tests:
     Amount of digits between 2 and 17
 
  """
-def find_all(sum_dig, digs):
-    arr = [1]*digs
+def gen(digs, num = 1):
+    if digs == 1:
+        for i in range(num, 10):
+            yield [i]
+    else:
+        for i in range(num, 10):
+            for j in gen(digs - 1, i):
+                yield [i] + j
 
-    for i in range(1, 10):        
-        for idx in range(digs-1,-1,-1):                                    
-            for j in range(i, 10):
-                arr[idx] = j        
-                print(arr)   
+def find_all(sum_dig, digs):        
+    arr = [x for x in gen(digs) if sum(x) == sum_dig] 
+    res = [int(''.join(map(str, x))) for x in arr]    
+    return [len(res), min(res), max(res)] if res else []    
 
 print(find_all(10, 3))
 # [8, 118, 334]
