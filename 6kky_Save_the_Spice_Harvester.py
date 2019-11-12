@@ -44,3 +44,9 @@ def harvester_rescue(data):
 # data3 = {'harvester': [850,125], 'worm': [[80,650],20], 'carryall': [[80,600],20]}
 # data4 = {'harvester': [0,320], 'worm': [[250,680],42], 'carryall': [[550,790],58]}
 # data5 = {'harvester': [0,0], 'worm': [[0,600],50], 'carryall': [[0,880],80]}
+
+# test.assert_equals(harvester_rescue(data1),'The spice must flow! Rescue the harvester!')
+# Test.assert_equals(harvester_rescue(data2),'Damn the spice! I\'ll rescue the miners!')
+# Test.assert_equals(harvester_rescue(data3),'The spice must flow! Rescue the harvester!')
+# Test.assert_equals(harvester_rescue(data4),'Damn the spice! I\'ll rescue the miners!')
+# Test.assert_equals(harvester_rescue(data5),'Damn the spice! I\'ll rescue the miners!')
