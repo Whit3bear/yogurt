@@ -34,18 +34,40 @@ data1 = {'harvester': [345,600], 'worm': [[200,100],25], 'carryall': [[350,200],
 
 harvester_rescue(data1); # returns 'The spice must flow! Rescue the harvester!' """
 
-def harvester_rescue(data):
-	#your code goes here. you can do it!
-	pass
+from math import hypot
 
+def harvester_rescue(data):
+    harv_x = data['harvester'][0]
+    harv_y = data['harvester'][1]
+
+    worm_x = data['worm'][0][0]
+    worm_y = data['worm'][0][1]
+    worm_speed = data['worm'][1]
+    
+    carryall_x = data['carryall'][0][0]
+    carryall_y = data['carryall'][0][1]
+    carryall_speed = data['carryall'][1]
+   
+    distance_worm = hypot(harv_x - worm_x, harv_y - worm_y)
+    distance_carryall = hypot(harv_x - carryall_x, harv_y - carryall_y)
+
+    res_worm = distance_worm / worm_speed
+    res_carryall = distance_carryall / carryall_speed + 1
+
+    return 'The spice must flow! Rescue the harvester!' if res_carryall < res_worm else 'Damn the spice! I\'ll rescue the miners!'
+	
 # test.describe('Example Tests')
 # data1 = {'harvester': [345,600], 'worm': [[200,100],25], 'carryall': [[350,200],32]}
+data1 = {'harvester': [0,0], 'worm': [[0,600],50], 'carryall': [[0,880],80]}
 # data2 = {'harvester': [200,400], 'worm': [[200,0],40], 'carryall': [[500,100],45]}
 # data3 = {'harvester': [850,125], 'worm': [[80,650],20], 'carryall': [[80,600],20]}
 # data4 = {'harvester': [0,320], 'worm': [[250,680],42], 'carryall': [[550,790],58]}
 # data5 = {'harvester': [0,0], 'worm': [[0,600],50], 'carryall': [[0,880],80]}
 
 # test.assert_equals(harvester_rescue(data1),'The spice must flow! Rescue the harvester!')
+print(harvester_rescue(data1))
+# 'The spice must flow! Rescue the harvester!')
+
 # Test.assert_equals(harvester_rescue(data2),'Damn the spice! I\'ll rescue the miners!')
 # Test.assert_equals(harvester_rescue(data3),'The spice must flow! Rescue the harvester!')
 # Test.assert_equals(harvester_rescue(data4),'Damn the spice! I\'ll rescue the miners!')
