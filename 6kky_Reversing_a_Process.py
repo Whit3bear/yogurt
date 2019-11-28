@@ -34,18 +34,30 @@ Note
 
 Please could you ask before translating : some translations are already written.
  """
-def decode(r):
-    a = a % m:
-    for x in range(1, m):
-        if x * a % m == res:
-            return x
-        return 'impossibru!'
+import re
 
+def decode(r):
+    a = int(''.join(re.findall('[0-9]', r)))   
+    s = re.findall('[a-z]', r)     
+    mod = 26
+    res = ''
+   
+    a = a % mod
+    for ch in s:
+        for x in range(mod):
+            if x * a % mod == ord(ch) % 97:                
+                res += chr(x % mod + 97)
+                break
+        else:
+            return 'Impossible to decode!'    
+    return res
     
 
 print(decode("1273409kuqhkoynvvknsdwljantzkpnmfgf"))
 #"uogbucwnddunktsjfanzlurnyxmx"
 print(decode("761328qockcouoqmoayqwmkkic"))
+#"Impossible to decode"
+print(decode("5057abcdefghijk"))
 #"Impossible to decode"
 #testing_decode("1544749cdcizljymhdmvvypyjamowl", "mfmwhbpoudfujjozopaugcb")
 #testing_decode("1122305vvkhrrcsyfkvejxjfvafzwpsdqgp", "rrsxppowmjsrclfljrajtybwviqb")
