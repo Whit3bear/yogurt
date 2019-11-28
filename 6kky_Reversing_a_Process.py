@@ -35,8 +35,13 @@ Note
 Please could you ask before translating : some translations are already written.
  """
 def decode(r):
-# your code
-    pass
+    a = a % m:
+    for x in range(1, m):
+        if x * a % m == res:
+            return x
+        return 'impossibru!'
+
+    
 
 print(decode("1273409kuqhkoynvvknsdwljantzkpnmfgf"))
 #"uogbucwnddunktsjfanzlurnyxmx"
