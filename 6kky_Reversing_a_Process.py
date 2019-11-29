@@ -35,7 +35,6 @@ Note
 Please could you ask before translating : some translations are already written.
  """
 import re
-
 def decode(r):
     a = int(''.join(re.findall('[0-9]', r)))   
     s = re.findall('[a-z]', r)     
@@ -44,12 +43,14 @@ def decode(r):
    
     a = a % mod
     for ch in s:
+        new_ch = ''
         for x in range(mod):
             if x * a % mod == ord(ch) % 97:                
-                res += chr(x % mod + 97)
-                break
+                if new_ch:
+                    return 'Impossible to decode!'
+                new_ch += chr(x % mod + 97)                
         else:
-            return 'Impossible to decode!'    
+            res += new_ch
     return res
     
 
