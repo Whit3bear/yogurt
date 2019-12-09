@@ -1,14 +1,15 @@
-import numpy as np
-
 def fib(n):
-  if n < 2 and n > -2:
-      return n
-  neg = False
-  if n < 0:
-      neg = True
-      n = abs(n)
-
-  arr = np.matrix([[0,1],[1,1]], dtype=object)
-  arrp = pow(arr, n-1)
-  res = arrp * np.matrix([[0],[1]])
-  return -long(res[1]) if neg and (abs(n)+1) % 2 != 0 else long(res[1])
+  if n < 0: return (-1)**(n % 2 + 1) * fib(-n)
+  a = b = x = 1
+  c = y = 0
+  while n:
+    if n % 2 == 0:
+      (a, b, c) = (a * a + b * b,
+                   a * b + b * c,
+                   b * b + c * c)
+      n /= 2
+    else:
+      (x, y) = (a * x + b * y,
+                b * x + c * y)
+      n -= 1
+  return y
