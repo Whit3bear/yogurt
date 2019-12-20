@@ -19,22 +19,17 @@ def next_bigger(n):
             break
     else:
         return -1
+    
+    swap = i    
+    for j in range(i, len(arr)):
+        if arr[i] < arr[j] or arr[j] > arr[i-1]:
+            swap = j
 
-    # дойти до замены, потом отсортировать срез по возрастанию
-    # swap = i
-    # for j in range(i, len(arr)):                   
-    #     if arr[j] > arr[i-1] and arr[j] > arr[i]:
-    #         swap = j 
-
-    arr[i-1], arr[i] = arr[i], arr[i-1]
+    arr[swap], arr[i-1] = arr[i-1], arr[swap]
     
     newlst = arr[:i] + sorted(arr[i:])
 
-    return newlst
-        # if arr[j]
-            
-        #     arr[i], arr[i-1] = arr[i-1], arr[i]
-        #     return int(''.join(arr))       
+    return int(''.join(newlst))
     
 print(next_bigger(698488273))
 # 698488327
