@@ -36,29 +36,25 @@ for the input [5, 10] return 8 (5, 7, 9 have strongness 0; 6, 10 have strongness
 for the input [48, 56] return 48
  """
 def strongest_even(n, m):    
-    # arr = [x for x in range(n, m+1) if x % 2 == 0]
-    # strongness = 0
-    # max = 0
-    # max_idx = 0    
+    result = 0
+    max_counter = 0    
 
-    # for x in range(len(arr)):
-    #     x = arr[x]
-    #     strongness = 0
-    #     while x % 2 == 0:
-    #         x //= 2
-    #         strongness += 1
-    #     if strongness > max:
-    #         max = strongness
-    #         max_idx = x
-    # return arr[max_idx]
-
-    # если степень двойки тогда однозначно х*=2, но если степень двойки не попадает в интервал
-    x = 1
-    while x*2 <= m:
-        x *= 2
-    if x < n:
-        x = x/2 + x    
-    return x
+    for i in range(n, m+1):
+        if i % 2:
+            continue        
+        counter = 0    
+        x = i
+        while x % 2 == 0:
+            x = x // 2
+            counter += 1
+        if counter > max_counter:
+            max_counter = counter
+            result = i
+    
+    return result
+        
+        
+    
     
 
 #print(strongest_even(1, 2))
