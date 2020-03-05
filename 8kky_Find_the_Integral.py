@@ -1,1 +1,0 @@
-integrate = lambda c,e: str(int(c/(e+1)))+'x^'+str(e+1)
