@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet prewiev</title>   
+	
+	<meta charset="utf-8" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   		crossorigin=""/>    		
+   	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   		integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   		crossorigin=""></script> 		
+</head>
+<body>
+    <div id="map" style="width: 200px; height: 200px"></div>                                          
+    <div id='message_name' style='display: none'></div>
+	<div id='message_data' style='display: none'></div> 	
+	<button id="button1c" style="display: none"></button>                 
+
+    <script>                       
+    	map = new L.Map('map', { center: new L.LatLng(55.7522, 37.6156), zoom: 10 });    
+    
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+		}).addTo(map);        
+        
+        var polygon_array = [
+            [
+              37.596588134765625,
+              55.734552853773316
+            ],
+            [
+              37.66199111938476,
+              55.734552853773316
+            ],
+            [
+              37.66199111938476,
+              55.75677605231897
+            ],
+            [
+              37.596588134765625,
+              55.75677605231897
+            ],
+            [
+              37.596588134765625,
+              55.734552853773316
+            ]
+          ]
+
+    	// Рисует многоугольник по заданным координатам
+    	function polygon_preview(polygon_array, color_hex = 'blue', fill_color_hex = 'blue', layer_opacity = 100, layer_fillOpacity = 20, stroke_weight = 3){                        			           										 			
+			polygon = new L.polygon(obj, {color: color_hex, fillColor: fill_color_hex, opacity: (layer_opacity / 100), fillOpacity: (layer_fillOpacity / 100), weight: stroke_weight}).addTo(drawnItems);
+    	};    	
+    	
+    	// Убираем многоугольник	
+    	function remove_polygon_org(){    		
+    		if (typeof polygon != "undefined") {    			
+    			polygon.remove();
+    		};
+    	};
+    			
+		function send_to_1C(name,data){ 				
+			console.log(name, data);					
+			document.getElementById('message_name').innerHTML  = name;
+			document.getElementById('message_data').innerHTML  = data; 
+			// Необходимо для срабатывания события при нажатии 			
+			button1c.click();
+		};
+    </script>
+</body>
+</html>
